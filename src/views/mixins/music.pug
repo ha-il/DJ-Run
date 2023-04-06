@@ -1,0 +1,6 @@
+mixin music(music)
+  ul
+    li=music.title
+    ul
+      each creator in music.creator
+        li=creator
