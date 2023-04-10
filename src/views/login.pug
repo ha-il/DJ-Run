@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+  if errorMessage
+    div=errorMessage
+  form(method="POST")
+    input(name="email" type="email" placeholder="이메일 주소" required )
+    input(name="password" type="password" placeholder="비밀번호" required )
+    input(type="submit", value="로그인하기")
+  div 계정이 없나요? 
+    a(href="/signup") DJ.Run에 가입하기

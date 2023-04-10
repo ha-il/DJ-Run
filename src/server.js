@@ -1,9 +1,11 @@
 import express from "express";
 import logger from "morgan";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 
-import globalRouter from "./routers/globalRouter.js";
-import accountRouter from "./routers/accountRouter.js";
-import playlistRouter from "./routers/playlistRouter.js";
+import { localsMiddleware } from "./middlewares.js";
+
+import rootRouter from "./routers/rootRouter.js";
 
 const app = express();
 
@@ -17,8 +19,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/static", express.static("assets"));
 
-app.use("/", globalRouter);
-app.use("/account", accountRouter);
-app.use("/playlist", playlistRouter);
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
+  })
+);
+
+app.use(localsMiddleware);
+app.use("/", rootRouter);
 
 export default app;
