@@ -6,21 +6,6 @@ html(lang="ko")
   body
     header
       h1 DJ.Run - #{title}
-      nav
-        ul
-          li
-            a(href="/") 홈
-          if isLoggedIn
-            li
-              a(href="/account") #{loggedInUser.username}
-            li
-              a(href="/logout") 로그아웃
-
-          else
-            li
-              a(href="/signup") 가입하기
-            li
-              a(href="/login") 로그인하기
 
     block content
     footer

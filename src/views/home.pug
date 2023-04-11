@@ -3,5 +3,11 @@ include mixins/music.pug
 
 block content
   main
-    h2(id="video-title")
+    div(class="player-container")
+      div(id="player")
+      div(id="player-button")
+        div ⇤
+        div(class="play-btn") ▶︎ 
+        div ⇥
+    ul(id="track-list")
   
