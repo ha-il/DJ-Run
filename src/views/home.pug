@@ -2,8 +2,6 @@ extends layout.pug
 include mixins/music.pug
 
 block content
-  h2 인기차트
-  each music in tracks
-    +music(music)
-  else
-    li 404
+  main
+    h2(id="video-title")
+  
