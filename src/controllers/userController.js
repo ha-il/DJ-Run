@@ -80,7 +80,76 @@ export const login = async (req, res) => {
   return res.redirect("/");
 };
 
-export const logout = async (req, res) => {
+export const loginWithKakao = (req, res) => {
+  const BASE_URL = `https://kauth.kakao.com/oauth/authorize`;
+  const config = {
+    response_type: "code",
+    client_id: process.env.KAKAO_REST_API_KEY,
+    redirect_uri: process.env.KAKAO_REDIRECT_URI,
+  };
+  const params = new URLSearchParams(config).toString();
+  const KAKAO_GET_AUTHORIZATION_CODE_URL = `${BASE_URL}?${params}`;
+
+  return res.redirect(KAKAO_GET_AUTHORIZATION_CODE_URL);
+};
+
+export const oauthWithKaKao = async (req, res) => {
+  const BASE_URL = `https://kauth.kakao.com/oauth/token`;
+  const config = {
+    grant_type: "authorization_code",
+    client_id: process.env.KAKAO_REST_API_KEY,
+    redirect_uri: process.env.KAKAO_REDIRECT_URI,
+    code: req.query.code,
+    client_secret: process.env.KAKAO_CLIENT_SECRET,
+  };
+  const params = new URLSearchParams(config).toString();
+  const KAKAO_GET_TOKEN_URL = `${BASE_URL}?${params}`;
+  const tokenRequest = await (
+    await fetch(KAKAO_GET_TOKEN_URL, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    })
+  ).json();
+  if ("access_token" in tokenRequest) {
+    const { access_token } = tokenRequest;
+
+    const userData = await (
+      await fetch("https://kapi.kakao.com/v2/user/me", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        },
+      })
+    ).json();
+
+    const { id, kakao_account } = userData;
+    const { is_email_valid, is_email_verified, email } = kakao_account;
+
+    if (!is_email_valid || !is_email_verified) {
+      return res.redirect("/login");
+    }
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      req.session.isLoggedIn = true;
+      req.session.loggedInUser = existingUser;
+      return res.redirect("/");
+    } else {
+      await User.create({
+        email,
+        username: id,
+      });
+      req.session.isLoggedIn = true;
+      req.session.loggedInUser = existingUser;
+    }
+  } else {
+    return res.redirect("/login");
+  }
+};
+
+export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
