@@ -1,11 +1,19 @@
 import mongoose from "mongoose";
 
 const trackSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  creator: [{ type: String, required: true }],
-  createdAt: { type: Date, default: Date.now },
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+    minLength: 1,
+    maxLength: 50,
+  },
+  artists: [
+    { type: String, required: true, trim: true, minLength: 1, maxLength: 50 },
+  ],
+  createdAt: { type: Date, required: true, default: Date.now },
 });
 
-const trackModel = mongoose.model("Track", trackSchema);
+const Track = mongoose.model("Track", trackSchema);
 
-export default trackModel;
+export default Track;

@@ -1,7 +1,8 @@
 extends layout.pug
-include mixins/music.pug
+include mixins/track.pug
 
 block content
-  main
-    h2(id="video-title")
+  ul
+    each track in tracks
+      +getTrack(track)
   

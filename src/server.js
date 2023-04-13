@@ -6,6 +6,7 @@ import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares.js";
 
 import rootRouter from "./routers/rootRouter.js";
+import trackRouter from "./routers/trackRouter.js";
 import apiRouter from "./routers/apiRouter.js";
 
 const app = express();
@@ -31,6 +32,7 @@ app.use(
 
 app.use(localsMiddleware);
 app.use("/", rootRouter);
+app.use("/track", trackRouter);
 app.use("/api", apiRouter);
 
 export default app;

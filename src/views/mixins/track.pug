@@ -1,0 +1,7 @@
+mixin getTrack(track)
+  li
+    div=track.name
+    each artist in track.artists
+      div=artist
+    div=track._id
+    div=track.createdAt

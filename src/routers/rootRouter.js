@@ -1,5 +1,5 @@
 import express from "express";
-import { getUserPlaylist } from "../controllers/playlistController.js";
+import { renderHomepage } from "../controllers/trackController.js";
 import {
   createAccount,
   login,
@@ -12,7 +12,7 @@ import {
 
 const rootRouter = express.Router();
 
-rootRouter.get("/", getUserPlaylist);
+rootRouter.get("/", renderHomepage);
 rootRouter.route("/signup").get(renderSignupPage).post(createAccount);
 rootRouter.route("/login").get(renderLoginPage).post(login);
 rootRouter.get("/kakao/login", loginWithKakao);
