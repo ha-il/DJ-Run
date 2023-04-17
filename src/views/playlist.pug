@@ -1,0 +1,30 @@
+extends layout.pug 
+
+block content
+  h1=playlist.name
+  div=playlist.owner.username
+  span 팔로우한 사람 #{playlist.followers_total}명
+  ul(id="playlist" data-playlist-id=`${playlist._id}`)
+    each track in playlist.tracks
+      li
+        div 이미지
+        div
+          div=track.name
+          each artist in track.artists
+            div=artist
+        div 3:55
+    
+
+  if String(playlist.owner._id) === loggedInUser._id 
+    h2 플레이리스트에 추가할 곡을 찾아보세요
+    div 곡 추천
+    ul(id="recommended-tracks-list")
+      each track in tracks
+        li
+          div
+          div 이미지
+          div
+            div=track.name
+            div=track.artists[0]
+          div 4:06
+          button(type="button" class="add-track-to-playlist" data-track-id=`${track._id}`) 추가하기
