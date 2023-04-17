@@ -1,4 +1,8 @@
 import express from "express";
+import {
+  loginRequiredMiddleware,
+  publicOnlyMiddleware,
+} from "../middlewares.js";
 import { renderHomepage } from "../controllers/trackController.js";
 import {
   createAccount,
@@ -13,10 +17,18 @@ import {
 const rootRouter = express.Router();
 
 rootRouter.get("/", renderHomepage);
-rootRouter.route("/signup").get(renderSignupPage).post(createAccount);
-rootRouter.route("/login").get(renderLoginPage).post(login);
-rootRouter.get("/kakao/login", loginWithKakao);
-rootRouter.get("/kakao/oauth", oauthWithKaKao);
-rootRouter.get("/logout", logout);
+rootRouter
+  .route("/signup")
+  .all(publicOnlyMiddleware)
+  .get(renderSignupPage)
+  .post(createAccount);
+rootRouter
+  .route("/login")
+  .all(publicOnlyMiddleware)
+  .get(renderLoginPage)
+  .post(login);
+rootRouter.get("/kakao/login", publicOnlyMiddleware, loginWithKakao);
+rootRouter.get("/kakao/oauth", publicOnlyMiddleware, oauthWithKaKao);
+rootRouter.get("/logout", loginRequiredMiddleware, logout);
 
 export default rootRouter;
