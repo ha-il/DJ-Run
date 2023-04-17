@@ -11,6 +11,7 @@ const trackSchema = new mongoose.Schema({
   artists: [
     { type: String, required: true, trim: true, minLength: 1, maxLength: 50 },
   ],
+  fileUrl: { type: String, require: true },
   createdAt: { type: Date, required: true, default: Date.now },
 });
 

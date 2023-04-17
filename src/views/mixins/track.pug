@@ -5,3 +5,4 @@ mixin getTrack(track)
       div=artist
     div=track._id
     div=track.createdAt
+    audio(src= `/${track.fileUrl}` controls) 

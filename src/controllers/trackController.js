@@ -1,3 +1,4 @@
+import Playlist from "../models/Playlist.js";
 import Track from "../models/Track.js";
 
 export const renderHomepage = async (req, res) => {
@@ -11,10 +12,13 @@ export const renderUploadTrackPage = (req, res) => {
 
 export const uploadTrack = async (req, res) => {
   const { name, artists } = req.body;
+  const { path } = req.file;
+
   try {
     await Track.create({
       name,
       artists: artists.split(","),
+      fileUrl: path,
     });
     return res.redirect("/");
   } catch (error) {
@@ -23,4 +27,14 @@ export const uploadTrack = async (req, res) => {
       errorMessage: error._message,
     });
   }
+};
+
+export const addTrackToPlaylist = async (req, res) => {
+  const { playlist_id, track_id } = req.params;
+  const track = await Track.findById(track_id);
+  await Playlist.findByIdAndUpdate(playlist_id, {
+    $push: { tracks: track },
+  });
+
+  return res.sendStatus(200);
 };
