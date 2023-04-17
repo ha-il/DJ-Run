@@ -3,6 +3,8 @@ extends layout.pug
 block content
   if errorMessage
     div=errorMessage
+  if notification
+    div=notification
   form(method="POST")
     input(name="email" type="email" placeholder="이메일 주소" required )
     input(name="password" type="password" placeholder="비밀번호" required )

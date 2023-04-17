@@ -13,8 +13,12 @@ html(lang="ko")
           if isLoggedIn
             li
               a(href="/account") #{loggedInUser.username}
+            li
+              button(type="button" id="create-playlist-button") 플레이리스트 만들기
             li 
               a(href="/track/upload") 트랙 등록하기
+            li 
+              a(href="/user/edit-profile") 프로필 편집하기
             li
               a(href="/logout") 로그아웃
 

@@ -9,6 +9,18 @@ export const renderLoginPage = (req, res) => {
   return res.render(`login.pug`, { title: "로그인하기" });
 };
 
+export const renderEditProfilePage = async (req, res) => {
+  return res.render("editProfile.pug", {
+    title: "프로필 편집하기",
+  });
+};
+
+export const renderEditPasswordPage = async (req, res) => {
+  return res.render("editPassword.pug", {
+    title: "비밀번호 변경하기",
+  });
+};
+
 export const createAccount = async (req, res) => {
   const title = "가입하기";
   const { email, username, password, confirmPassword } = req.body;
@@ -149,6 +161,89 @@ export const oauthWithKaKao = async (req, res) => {
   }
 };
 
+export const editProfile = async (req, res) => {
+  const title = "프로필 편집하기";
+  const { email: inputEmail, username: inputUsername } = req.body;
+  const {
+    _id,
+    email: loggedInEmail,
+    username: loggedInUsername,
+  } = req.session.loggedInUser;
+
+  if (inputEmail === loggedInEmail && inputUsername === loggedInUsername) {
+    return res.status(400).render(`editProfile.pug`, {
+      title,
+      errorMessage: "변경 사항이 존재하지 않아 프로필이 변경되지 않았습니다.",
+    });
+  }
+
+  const existedEmail = await User.exists({ email: inputEmail });
+  const existedUsername = await User.exists({ username: inputUsername });
+
+  if (existedEmail && existedUsername) {
+    return res.status(400).render(`editProfile.pug`, {
+      title,
+      errorMessage: "이미 사용중인 이메일과 사용자 이름입니다.",
+    });
+  }
+
+  if (existedEmail && inputEmail !== loggedInEmail) {
+    return res.status(400).render(`editProfile.pug`, {
+      title,
+      errorMessage: "이미 사용중인 이메일입니다.",
+    });
+  }
+
+  if (existedUsername && inputUsername !== loggedInUsername) {
+    return res.status(400).render(`editProfile.pug`, {
+      title,
+      errorMessage: "이미 사용중인 사용자 이름입니다.",
+    });
+  }
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      { email: inputEmail, username: inputUsername },
+      { new: true }
+    );
+
+    req.session.loggedInUser = updatedUser;
+
+    return res.redirect("/user/edit-profile");
+  } catch (error) {
+    return res.status(400).render(`editProfile.pug`, {
+      title,
+      errorMessage: error._message,
+    });
+  }
+};
+
+export const editPassword = async (req, res) => {
+  const { currentPassword, newPassword, newPasswordConfirm } = req.body;
+  const { _id } = req.session.loggedInUser;
+  const user = await User.findById(_id);
+  const isValidPassword = await bcrypt.compare(currentPassword, user.password);
+
+  if (!isValidPassword) {
+    return res.status(400).render(`editPassword.pug`, {
+      title: "비밀번호 변경하기",
+      errorMessage: "현재 비밀번호가 일치하지 않습니다.",
+    });
+  }
+
+  if (newPassword !== newPasswordConfirm) {
+    return res.status(400).render(`editPassword.pug`, {
+      title: "비밀번호 변경하기",
+      errorMessage: "입력한 새로운 비밀번호를 확인해주세요.",
+    });
+  }
+
+  user.password = newPassword;
+  user.save();
+
+  return res.redirect("/logout");
+};
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");

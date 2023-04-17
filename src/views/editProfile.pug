@@ -1,0 +1,10 @@
+extends layout.pug 
+
+block content
+  if errorMessage
+    div=errorMessage
+  form(method="POST")
+    input(name="email" type="email" value=loggedInUser.email placeholder="이메일을 입력하세요." required )
+    input(name="username" type="text" value=loggedInUser.username placeholder="사용자 이름을 입력하세요" required )
+    input(type="submit", value="프로필 편집 완료")
+  a(href="/user/edit-password") 비밀번호 변경하기
