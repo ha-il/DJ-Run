@@ -1,7 +1,7 @@
 doctype html
 html(lang="ko")
   head
-    title DJ.Run
+    title DJ.Run-#{title}
     link(rel="stylesheet", href="/static/css/styles.css")
   body
     div(class="container")
@@ -30,11 +30,11 @@ html(lang="ko")
             i(class="fa-solid fa-heart")
             span  좋아요 표시한 곡
           
-        
-        div(class="navigation-loggedInUser-playlists")
-          a(href="/playlists/:playlist_id") 로그인 유저의 플레이리스트
-          a(href="/playlists/:playlist_id") 나중에 프론트 사이드에서
-          a(href="/playlists/:playlist_id") 교체해야 합니다.
+        if isLoggedIn
+          div(class="navigation-loggedInUser-playlists")
+            a(href="/playlists/:playlist_id") 로그인 유저의 플레이리스트
+            a(href="/playlists/:playlist_id") 나중에 프론트 사이드에서
+            a(href="/playlists/:playlist_id") 교체해야 합니다.
 
       div(class="main-content")
         header(id="top-header")
@@ -44,16 +44,20 @@ html(lang="ko")
             button(type="button")
               i(class="fa-solid fa-chevron-right")
           div(class="header-menus")
-            div(class="header-public_menu")
-              a(class="header-public_menu-signup_link" href="/signup") 가입하기
-              a(class="header-public_menu-login_link" href="/signup") 로그인하기
-            div(class="header-loggrdInUser_menu")
-              button(type="button")
-                i(class="fa-solid fa-user")
-                span 김하일
-                i(class="fa-solid fa-caret-down")
+            if isLoggedIn
+              div(class="header-loggrdInUser_menu")
+                button(type="button")
+                  i(class="fa-solid fa-user")
+                  span=loggedInUser.profileName
+                  i(class="fa-solid fa-caret-down")
+            else
+              div(class="header-public_menu")
+                a(class="header-public_menu-signup_link" href="/signup") 가입하기
+                a(class="header-public_menu-login_link" href="/signup") 로그인하기  
+              
         main
-          div(id="app")
+          block content
+    
       
     div(id="bottom-track_player")
       div(class="track_player-track_info")
