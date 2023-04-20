@@ -1,0 +1,52 @@
+.chart_container {
+  padding: $spacing-16;
+  width: $maxWidth-4xl;
+  display: flex;
+  flex-direction: column;
+  .error_message {
+    color: $color-red;
+  }
+  .chart_head {
+    display: flex;
+    border-top: $color-gray 1px solid;
+    border-bottom: $color-gray 1px solid;
+    padding: $spacing-4 $spacing-8;
+    justify-content: space-between;
+  }
+  ol {
+    .track_container {
+      display: flex;
+      padding: $spacing-4 $spacing-6;
+      .rank {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: $spacing-20;
+      }
+      .info {
+        display: flex;
+        align-items: center;
+        width: 300px;
+        .image {
+          width: 50px;
+          height: 50px;
+          background-color: $color-white;
+          margin-right: $spacing-4;
+        }
+        .detail {
+          display: flex;
+          flex-direction: column;
+          .artists {
+            font-size: $fontSize-0;
+            color: $color-gray;
+          }
+        }
+      }
+      .genres {
+        width: 250px;
+      }
+    }
+  }
+}

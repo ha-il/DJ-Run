@@ -3,7 +3,10 @@ import {
   loginRequiredMiddleware,
   publicOnlyMiddleware,
 } from "../middlewares.js";
-import { renderHomepage } from "../controllers/trackController.js";
+import {
+  renderChartPage,
+  renderHomepage,
+} from "../controllers/trackController.js";
 import {
   createAccount,
   login,
@@ -14,7 +17,7 @@ import {
 
 const rootRouter = express.Router();
 
-rootRouter.get("/", (req, res) => res.render("home.pug"));
+rootRouter.get("/", (req, res) => res.render("home.pug", { title: "홈" }));
 rootRouter
   .route("/signup")
   .all(publicOnlyMiddleware)
@@ -25,7 +28,7 @@ rootRouter
   .all(publicOnlyMiddleware)
   .get(renderLoginPage)
   .post(login);
-rootRouter.get("/chart");
+rootRouter.get("/chart", renderChartPage);
 rootRouter.get("/search");
 rootRouter.get("/queue");
 rootRouter.get("/user/:user_id");

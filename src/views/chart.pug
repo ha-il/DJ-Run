@@ -1,0 +1,24 @@
+extends layout.pug 
+
+block content
+  div(class="chart_container")
+    div(class="chart_head")
+      span(class="rank") 순위
+      span(class="info") 곡정보
+      span(class="genres") 장르
+      span(class="like_number") 좋아요
+    if errorMessage
+      span(class="error_message")=errorMessage
+    ol
+      each track, index in tracks
+        li(class="track_container")
+          span(class="rank") #{index + 1}위
+          div(class="info")
+            div(class="image")
+            div(class="detail")
+              span(class="name")=track.name
+              span(class="artists")=track.artists
+          span(class="genres")=track.genres
+          span(class="like_number")=track.additionCount
+
+    
