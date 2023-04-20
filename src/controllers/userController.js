@@ -23,7 +23,7 @@ export const renderEditPasswordPage = async (req, res) => {
 
 export const createAccount = async (req, res) => {
   const title = "가입하기";
-  const { email, username, password, confirmPassword } = req.body;
+  const { email, username, profileName, password, confirmPassword } = req.body;
   const isEmailExists = await User.exists({ email });
   const isUsernameExists = await User.exists({ username });
 
@@ -55,6 +55,7 @@ export const createAccount = async (req, res) => {
     await User.create({
       email,
       username,
+      profileName,
       password,
     });
     return res.redirect("/login");

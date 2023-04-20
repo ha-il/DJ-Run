@@ -21,9 +21,7 @@ export const createPlaylist = async (req, res) => {
     name: "내 플레이리스트",
     owner: _id,
     tracks: [],
-    followers_total: 0,
   });
 
-  console.log(newPlaylist);
   return res.status(200).json(newPlaylist._id);
 };
