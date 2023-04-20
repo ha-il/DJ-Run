@@ -1,1 +1,148 @@
-$bg: whitesmoke;
+@import url("//cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@1.530/neodgm/style.css");
+.font-neodgm {
+  font-family: "NeoDunggeunmo";
+}
+@import url("//cdn.jsdelivr.net/gh/neodgm/neodgm-pro-webfont@1.020/neodgm_pro/style.css");
+.font-neodgm-pro {
+  font-family: "NeoDunggeunmo Pro";
+}
+
+$maxWidth-none: "none";
+$maxWidth-xs: 20rem;
+$maxWidth-sm: 24rem;
+$maxWidth-md: 28rem;
+$maxWidth-lg: 32rem;
+$maxWidth-xl: 36rem;
+$maxWidth-2xl: 42rem;
+$maxWidth-3xl: 48rem;
+$maxWidth-4xl: 56rem;
+$maxWidth-full: 100%;
+$maxWidth-wrapper: $maxWidth-4xl;
+
+$spacing-px: "1px";
+$spacing-0: 0;
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.25rem;
+$spacing-6: 1.5rem;
+$spacing-8: 2rem;
+$spacing-10: 2.5rem;
+$spacing-12: 3rem;
+$spacing-16: 4rem;
+$spacing-20: 5rem;
+$spacing-24: 6rem;
+$spacing-32: 8rem;
+
+/* 1.200 Minor Third Type Scale */
+$fontSize-0: 0.833rem;
+$fontSize-1: 1rem;
+$fontSize-2: 1.2rem;
+$fontSize-3: 1.44rem;
+$fontSize-4: 1.728rem;
+$fontSize-5: 2.074rem;
+$fontSize-6: 2.488rem;
+$fontSize-7: 2.986rem;
+
+$fontFamily-sans: "NeoDunggeunmo Pro", "MontserratVariable", system-ui,
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+  "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+$fontFamily-serif: "NeoDunggeunmo Pro", "Merriweather", "Georgia", Cambria,
+  "Times New Roman", Times, serif;
+$font-body: $fontFamily-serif;
+$font-heading: $fontFamily-sans;
+$fontWeight-normal: 400;
+$fontWeight-bold: 700;
+$fontWeight-black: 900;
+$fontSize-root: 16px;
+$lineHeight-none: 1;
+$lineHeight-tight: 1.1;
+$lineHeight-normal: 1.5;
+$lineHeight-relaxed: 1.625;
+
+$color-primary: #005b99;
+$color-text: #2e353f;
+$color-text-light: #4f5969;
+$color-heading: #1a202c;
+$color-heading-black: black;
+$color-accent: #d1dce5;
+
+$color-white: #ffffff;
+$color-white-opacity: rgba(255, 255, 255, 0.5);
+$color-black: #000000;
+
+$color-background-000: #00000030; // #000000
+$color-background-100: #121212; // #121212
+$color-background-200: #181818; // #181818 낫호버
+$color-background-300: #292929; // #282828 호버
+$color-background-400: #727272; // 밝은 오브젝트
+
+$greyOpacity50: rgba(0, 23, 51, 0.02);
+$greyOpacity100: rgba(2, 32, 71, 0.05);
+$greyOpacity200: rgba(0, 27, 55, 0.1);
+$greyOpacity300: rgba(0, 29, 58, 0.18);
+$greyOpacity400: rgba(0, 29, 54, 0.31);
+$greyOpacity500: rgba(3, 24, 50, 0.46);
+$greyOpacity600: rgba(0, 19, 43, 0.58);
+$greyOpacity700: rgba(3, 18, 40, 0.7);
+$greyOpacity800: rgba(0, 12, 30, 0.8);
+$greyOpacity900: rgba(2, 9, 19, 0.91);
+$shadow-s: 0 0 4px 0 var($greyOpacity100), 0 4px 16px 0 var($greyOpacity100);
+$shadow-m: 0 8px 16px 0 var($greyOpacity200), 0 4px 8px 0 var($greyOpacity100);
+$shadow-l: 0 24px 40px 0 var($greyOpacity50), 0 16px 24px 0 var($greyOpacity200),
+  0 0 8px 0 var($greyOpacity100);
+
+/*
+$color-background-0: rgb(24, 6, 48);
+$color-background-1: rgb(32, 8, 64);
+$color-background-2: rgb(63, 15, 125);
+$color-background-3: rgb(50, 26, 77);
+$color-background-4: rgb(47, 39, 88);
+
+$color-white: rgb(255, 255, 255);
+$color-dim: rgba(255, 255, 255, 0.5);
+$color-red: rgb(255, 102, 0);
+$color-orange: rgb(255, 153, 0);
+$color-yellow: rgb(255, 204, 0);
+$color-lime: rgb(204, 255, 0);
+$color-green: rgb(102, 255, 0);
+$color-blue: rgb(0, 204, 255);
+$color-purple: rgb(153, 51, 255);
+$color-pink: rgb(255, 51, 204);
+$color-cyan: rgb(153, 255, 255);
+
+$color-cta-background: rgba(255, 255, 255, 0.125);
+$color-cta-border: rgba(255, 255, 255, 0.25);
+$color-cta-hover-background: rgba(255, 255, 255, 0.25);
+$color-cta-hover-border: rgba(255, 255, 255, 0.5);
+$color-cta-text: rgba(153, 255, 255, 1);
+
+$color-logo-face-top: #5d84a0;
+$color-logo-face-left: #3e4670;
+$color-logo-face-right: #2f2758;  
+
+$text-shadow-logo: 0.0625em 0.0625em $color-logo-face-left,
+  0.125em 0.125em $color-logo-face-right;
+*/
+
+/*
+$color-red: #f07178;
+$color-orange: #f78c6c;
+$color-yellow: #ffcb6b;
+$color-green: #c3e88d;
+$color-cyan: #89ddff;
+$color-blue: #82aaff;
+$color-paleblue: #b2ccd6;
+$color-purple: #c792ea;
+$color-brown: #916b53;
+$color-pink: #ff9cac;
+$color-violet: #bb80b3;
+$color-defaultAccent: #80cbc4;
+
+$color-comments: #676e95;
+$color-caret: #ffcc00;
+$color-findHighlight: #ffcc00;
+$color-foreground: #a6accd;
+*/

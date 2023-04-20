@@ -1,5 +1,234 @@
 @import "./_variables.scss";
+@import "./reset.scss";
+
+@import url("//cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@1.530/neodgm/style.css");
+.font-neodgm {
+  font-family: "NeoDunggeunmo";
+}
+@import url("//cdn.jsdelivr.net/gh/neodgm/neodgm-pro-webfont@1.020/neodgm_pro/style.css");
+.font-neodgm-pro {
+  font-family: "NeoDunggeunmo Pro";
+}
 
 body {
-  background-color: $bg;
+  font-family: $font-body;
+  background-color: $color-background-100;
+  color: $color-white;
+}
+
+.container {
+  display: flex;
+}
+
+.main-content {
+  width: $maxWidth-full;
+  display: flex;
+  flex-direction: column;
+}
+
+#left-navigation {
+  background-color: $color-background-000;
+  padding: $spacing-6;
+  width: $maxWidth-none;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .navigation-logo {
+    font-size: $fontSize-6;
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-8;
+    i {
+      font-size: $fontSize-6;
+      margin-right: $spacing-2;
+    }
+  }
+  .navigation-public_menu {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing-8;
+    font-size: $fontSize-0;
+    a {
+      padding-top: $spacing-2;
+      padding-bottom: $spacing-2;
+      display: flex;
+      align-items: center;
+      i {
+        font-size: $fontSize-3;
+        width: $fontSize-3;
+        height: $fontSize-3;
+        text-align: center;
+        margin-right: $spacing-3;
+      }
+    }
+  }
+  .navigation-loggedInUser_menu {
+    display: flex;
+    flex-direction: column;
+    button {
+      text-align: left;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      padding-top: $spacing-2;
+      padding-bottom: $spacing-2;
+      width: 12rem;
+      i {
+        font-size: $fontSize-1;
+        width: $fontSize-3;
+        height: $fontSize-3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-white;
+        border-radius: 2.5px;
+        color: $color-black;
+        text-align: center;
+        margin-right: $spacing-3;
+      }
+      span {
+        font-size: $fontSize-0;
+      }
+    }
+  }
+  .navigation-loggedInUser-playlists {
+    border-top: $color-white-opacity solid 1px;
+    display: flex;
+    flex-direction: column;
+    font-size: $fontSize-0;
+    margin-top: $spacing-3;
+    padding-top: $spacing-3;
+    a {
+      padding-top: $spacing-2;
+      padding-bottom: $spacing-2;
+    }
+  }
+}
+
+#top-header {
+  width: $maxWidth-full;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-6;
+  .header-navigation_buttons {
+    button {
+      font-size: $fontSize-2;
+      margin: $spacing-1;
+    }
+  }
+  .header-menus {
+    display: flex;
+    align-items: center;
+    .header-public_menu {
+      a {
+        padding: $spacing-4;
+        border-radius: 50px;
+      }
+      .header-public_menu-signup_link {
+      }
+      .header-public_menu-login_link {
+        background-color: $color-white;
+        color: $color-text;
+      }
+    }
+    .header-loggrdInUser_menu {
+      padding: $spacing-1;
+      border-radius: 40px;
+      background-color: $color-background-000;
+      .fa-user {
+        background-color: $color-background-400;
+        padding: $spacing-1;
+        border-radius: 50%;
+      }
+      span {
+        margin-left: $spacing-2;
+        margin-right: $spacing-2;
+      }
+    }
+  }
+}
+
+#bottom-track_player {
+  width: $maxWidth-full;
+  height: $spacing-24;
+  background-color: $color-background-100;
+  border-top: $color-background-300 0.5px solid;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-4;
+  .track_player-track_info {
+    display: flex;
+    align-items: center;
+    .track_player-track_info-image {
+      width: 50px;
+      height: 50px;
+      background-color: $color-white;
+      margin-right: $spacing-4;
+    }
+    .track_player-track_info-track {
+      display: flex;
+      flex-direction: column;
+      margin-right: $spacing-6;
+      .track_player-track_info-artists {
+        margin-top: $spacing-1;
+        font-size: $fontSize-0;
+      }
+    }
+    button {
+      font-size: $fontSize-1;
+    }
+  }
+  .track_player-playing_contorollers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .track_player-playing_contorollers-buttons {
+      button {
+        font-size: $fontSize-2;
+        margin: $spacing-2;
+        .fa-play {
+          color: black;
+          font-size: $fontSize-1;
+          background-color: $color-white;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+        }
+      }
+    }
+    .track_player-playing_contorollers-playing_bar {
+      display: flex;
+      align-items: center;
+      input {
+        width: $maxWidth-xl;
+        margin-left: $spacing-2;
+        margin-right: $spacing-2;
+      }
+    }
+  }
+  .track_player-outhers_contorollers {
+    display: flex;
+    align-items: center;
+    button {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        font-size: $fontSize-1;
+      }
+    }
+  }
+}
+main {
+  padding: $spacing-4;
 }
