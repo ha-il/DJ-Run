@@ -6,13 +6,16 @@ html(lang="ko")
   body
     div(class="container")
       nav(id="left-navigation")
-        div(class="navigation-logo")
+        a(class="navigation-logo" href="/")
           i(class="fa-solid fa-person-running")
           span DJ.Run
         div(class="navigation-public_menu")
-          a(href="/chart")
+          a(href="/")
             i(class="fa-solid fa-house")
             span  홈
+          a(href="/chart")
+            i(class="fa-solid fa-chart-simple")
+            span  인기차트
           a(href="/search") 
             i(class="fa-solid fa-magnifying-glass")
             span  검색하기
@@ -53,7 +56,7 @@ html(lang="ko")
             else
               div(class="header-public_menu")
                 a(class="header-public_menu-signup_link" href="/signup") 가입하기
-                a(class="header-public_menu-login_link" href="/signup") 로그인하기  
+                a(class="header-public_menu-login_link" href="/login") 로그인하기  
               
         main
           block content
