@@ -7,16 +7,14 @@ import { renderHomepage } from "../controllers/trackController.js";
 import {
   createAccount,
   login,
-  loginWithKakao,
   logout,
-  oauthWithKaKao,
   renderLoginPage,
   renderSignupPage,
 } from "../controllers/userController.js";
 
 const rootRouter = express.Router();
 
-rootRouter.get("/", (req, res) => res.render("layout.pug"));
+rootRouter.get("/", (req, res) => res.render("home.pug"));
 rootRouter
   .route("/signup")
   .all(publicOnlyMiddleware)
@@ -27,8 +25,11 @@ rootRouter
   .all(publicOnlyMiddleware)
   .get(renderLoginPage)
   .post(login);
-rootRouter.get("/kakao/login", publicOnlyMiddleware, loginWithKakao);
-rootRouter.get("/kakao/oauth", publicOnlyMiddleware, oauthWithKaKao);
-rootRouter.get("/logout", loginRequiredMiddleware, logout);
+rootRouter.get("/chart");
+rootRouter.get("/search");
+rootRouter.get("/queue");
+rootRouter.get("/user/:user_id");
+rootRouter.get("/track/:track_id");
+rootRouter.get("/playlists/:playlist_id");
 
 export default rootRouter;
