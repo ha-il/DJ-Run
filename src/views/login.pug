@@ -1,15 +1,21 @@
 extends layout.pug
 
 block content
-  if errorMessage
-    div=errorMessage
-  if notification
-    div=notification
-  form(method="POST")
-    input(name="email" type="email" placeholder="이메일 주소" required )
-    input(name="password" type="password" placeholder="비밀번호" required )
-    input(type="submit", value="로그인하기")
-  br
-  a(href=`/kakao/login`) 카카오 로그인
-  div 계정이 없나요? 
-    a(href="/signup") DJ.Run에 가입하기
+  
+  div(class="form-container")
+    if errorMessage
+        div(class="error_message")=errorMessage
+    form(method="POST")
+      div(class="form-input")
+        label(for="username") 사용자 이름
+        input(id="username" name="username" type="text" placeholder="사용자 이름" required )
+      div(class="form-input") 
+        label(for="password") 비밀번호
+        input(id="password" name="password" type="password" placeholder="비밀번호" required )
+      input(type="submit", value="로그인하기")
+    
+    div(class="link-container") 
+      span 계정이 없나요? 
+      a(href="/signup") DJ.Run에 가입하기
+    
+      
