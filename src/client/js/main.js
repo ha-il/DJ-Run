@@ -1,5 +1,14 @@
 import "../scss/styles.scss";
 
-const $app = document.querySelector("#app");
+const topHeader = document.querySelector("#top-header");
 
-$app.innerHTML = `<h1>Hello</h1>`;
+const changeHeaderBackgroundColor = () => {
+  const browserScrollY = window.scrollY;
+  if (browserScrollY > 0) {
+    topHeader.classList.add("header-scroll-active");
+  } else {
+    topHeader.classList.remove("header-scroll-active");
+  }
+};
+
+window.addEventListener("scroll", changeHeaderBackgroundColor);
