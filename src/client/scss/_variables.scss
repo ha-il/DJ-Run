@@ -72,12 +72,26 @@ $color-accent: #d1dce5;
 $color-white: #ffffff;
 $color-white-opacity: rgba(255, 255, 255, 0.5);
 $color-black: #000000;
+$color-gray: rgba(255, 255, 255, 0.75);
+$color-main-100: rgb(153, 255, 255);
+$color-main-200: #5d84a0;
+$color-main-300: #3e4670;
+$color-main-400: #2f2758;
 
-$color-background-000: #00000030; // #000000
-$color-background-100: #121212; // #121212
-$color-background-200: #181818; // #181818 낫호버
-$color-background-300: #292929; // #282828 호버
-$color-background-400: #727272; // 밝은 오브젝트
+$color-red: rgb(255, 102, 0);
+$color-orange: rgb(255, 153, 0);
+$color-yellow: rgb(255, 204, 0);
+$color-lime: rgb(204, 255, 0);
+$color-green: rgb(102, 255, 0);
+$color-blue: rgb(0, 204, 255);
+$color-purple: rgb(153, 51, 255);
+$color-pink: rgb(255, 51, 204);
+
+$color-background-000: #00000030;
+$color-background-100: #121212;
+$color-background-200: #181818;
+$color-background-300: #292929;
+$color-background-400: #727272;
 
 $greyOpacity50: rgba(0, 23, 51, 0.02);
 $greyOpacity100: rgba(2, 32, 71, 0.05);
@@ -103,14 +117,7 @@ $color-background-4: rgb(47, 39, 88);
 
 $color-white: rgb(255, 255, 255);
 $color-dim: rgba(255, 255, 255, 0.5);
-$color-red: rgb(255, 102, 0);
-$color-orange: rgb(255, 153, 0);
-$color-yellow: rgb(255, 204, 0);
-$color-lime: rgb(204, 255, 0);
-$color-green: rgb(102, 255, 0);
-$color-blue: rgb(0, 204, 255);
-$color-purple: rgb(153, 51, 255);
-$color-pink: rgb(255, 51, 204);
+
 $color-cyan: rgb(153, 255, 255);
 
 $color-cta-background: rgba(255, 255, 255, 0.125);
