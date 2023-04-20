@@ -68,13 +68,13 @@ export const createAccount = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
 
   if (!user) {
     return res.status(400).render(`login.pug`, {
       title: "Login",
-      errorMessage: "해당 이메일로 가입한 유저가 존재하지 않습니다.",
+      errorMessage: `'${username}'으로 가입한 유저가 존재하지 않습니다.`,
     });
   }
 
