@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
 const playlistSchema = new mongoose.Schema({
-  description: String,
-  name: { type: String, required: true },
+  name: { type: String, required: true, minLength: 1, maxLength: 50 },
+  description: { type: String, maxLength: 100 },
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
-  public: Boolean,
+  public: { type: Boolean, required: true, default: false },
   tracks: [
     { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Track" },
   ],
-  uri: String,
-  followers_total: Number,
+  additionCount: { type: Number, required: true, default: 0 },
+  createdAt: { type: Date, required: true, default: Date.now },
 });
 
 const Playlist = mongoose.model("Playlist", playlistSchema);
