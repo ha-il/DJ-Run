@@ -1,34 +1,90 @@
 doctype html
 html(lang="ko")
   head
-    title #{title} - DJ.Run
+    title DJ.Run
     link(rel="stylesheet", href="/static/css/styles.css")
   body
-    header
-      h1 DJ.Run - #{title}
-      nav
-        ul
-          li
-            a(href="/") 홈
-          if isLoggedIn
-            li
-              a(href="/account") #{loggedInUser.username}
-            li
-              button(type="button" id="create-playlist-button") 플레이리스트 만들기
-            li 
-              a(href="/track/upload") 트랙 등록하기
-            li 
-              a(href="/user/edit-profile") 프로필 편집하기
-            li
-              a(href="/logout") 로그아웃
+    div(class="container")
+      nav(id="left-navigation")
+        div(class="navigation-logo")
+          i(class="fa-solid fa-person-running")
+          span DJ.Run
+        div(class="navigation-public_menu")
+          a(href="/chart")
+            i(class="fa-solid fa-house")
+            span  홈
+          a(href="/search") 
+            i(class="fa-solid fa-magnifying-glass")
+            span  검색하기
+          a(href="/collection/playlists") 
+            i(class="fa-solid fa-bookmark")
+            span  내 라이브러리
+        div(class="navigation-loggedInUser_menu")
+          button(type="button") 
+            i(class="fa-solid fa-person-running")
+            span  러닝 플레이리스트 만들기
+          button(type="button") 
+            i(class="fa-solid fa-plus")
+            span  플레이리스트 만들기
+          button(type="button") 
+            i(class="fa-solid fa-heart")
+            span  좋아요 표시한 곡
+          
+        
+        div(class="navigation-loggedInUser-playlists")
+          a(href="/playlists/:playlist_id") 로그인 유저의 플레이리스트
+          a(href="/playlists/:playlist_id") 나중에 프론트 사이드에서
+          a(href="/playlists/:playlist_id") 교체해야 합니다.
 
-          else
-            li
-              a(href="/signup") 가입하기
-            li
-              a(href="/login") 로그인하기
-    main
-      block content
-    footer
-      p Copyright &copy; 2023 김형우
+      div(class="main-content")
+        header(id="top-header")
+          div(class="header-navigation_buttons")
+            button(type="button")
+              i(class="fa-solid fa-chevron-left")
+            button(type="button")
+              i(class="fa-solid fa-chevron-right")
+          div(class="header-menus")
+            div(class="header-public_menu")
+              a(class="header-public_menu-signup_link" href="/signup") 가입하기
+              a(class="header-public_menu-login_link" href="/signup") 로그인하기
+            div(class="header-loggrdInUser_menu")
+              button(type="button")
+                i(class="fa-solid fa-user")
+                span 김하일
+                i(class="fa-solid fa-caret-down")
+        main
+          div(id="app")
+      
+    div(id="bottom-track_player")
+      div(class="track_player-track_info")
+        div(class="track_player-track_info-image")
+        div(class="track_player-track_info-track")
+          span(class="track_player-track_info-name") Lights Out
+          span(class="track_player-track_info-artists") Deauxnuts
+        button(type="button")
+          i(class="fa-regular fa-heart")
+      div(class="track_player-playing_contorollers")
+        div(class="track_player-playing_contorollers-buttons")
+          button(type="button")
+            i(class="fa-solid fa-shuffle")
+          button(type="button")
+            i(class="fa-solid fa-backward-step")
+          button(class="track_player-playing_contorollers-toggle_play_button" type="button")
+            i(class="fa-solid fa-play")
+          button(type="button")
+            i(class="fa-solid fa-forward-step")
+          button(type="button")
+            i(class="fa-solid fa-repeat")
+        div(class="track_player-playing_contorollers-playing_bar")
+          span 0:11
+          input(class="track_player-playing_contorollers-playing_range" type="range") 
+          span 3:48
+      div(class="track_player-outhers_contorollers")
+        button(type="button")  
+          i(class="fa-solid fa-bars")
+        button(type="button")
+          i(class="fa-solid fa-volume-high")
+        input(class="track_player-outhers_contorollers-volumerange" type="range") 
+      
     script(src="/static/js/main.js")
+    script(src="https://kit.fontawesome.com/c560ecab76.js" crossorigin="anonymous")

@@ -16,7 +16,7 @@ import {
 
 const rootRouter = express.Router();
 
-rootRouter.get("/", renderHomepage);
+rootRouter.get("/", (req, res) => res.render("layout.pug"));
 rootRouter
   .route("/signup")
   .all(publicOnlyMiddleware)
