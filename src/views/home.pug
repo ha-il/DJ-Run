@@ -1,8 +1,80 @@
 extends layout.pug
-include mixins/track.pug
 
 block content
-  ul
-    each track in tracks
-      +getTrack(track)
-  
+  if isLoggedIn
+    h1(class="greeting") #{loggedInUser.profileName}님, DJ.Run에 오신 걸 환영합니다!
+    div(class="loggedInUser_playlists")
+      div(class="loggedInUser_playlist_container")
+        div(class="image") image
+        span 플레이리스트 이름
+      div(class="loggedInUser_playlist_container")
+        div(class="image") image
+        span 플레이리스트 이름
+      div(class="loggedInUser_playlist_container")
+        div(class="image") image
+        span 플레이리스트 이름
+      div(class="loggedInUser_playlist_container")
+        div(class="image") image
+        span 플레이리스트 이름
+      div(class="loggedInUser_playlist_container")
+        div(class="image") image
+        span 플레이리스트 이름
+      div(class="loggedInUser_playlist_container")
+        div(class="image") image
+        span 플레이리스트 이름
+        
+  h2(class="sub-title") 많이 재생된 플레이리스트를 추천한다 
+  div(class="recommended_playlists")
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+    div(class="playlist_container")
+      div(class="image") image 
+      div(class="info")
+        span(class="name") 플레이리스트 이름
+        span(class="description") 이 플레이리스트의 설명을 적는 칸입니다.
+
+  h2(class="sub-title") DJ.Run에 등록된 장르를 기준으로 플레이리스트를 보여준다.
+  div(class="genre_playlists")
+    div(class="genre_container")
+      span 장르 이름
+    div(class="genre_container")
+      span 장르 이름
+    div(class="genre_container")
+      span 장르 이름
+    div(class="genre_container")
+      span 장르 이름
+      
+      
