@@ -6,9 +6,9 @@ import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares.js";
 
 import rootRouter from "./routers/rootRouter.js";
-
 import accountRouter from "./routers/accountRouter.js";
 import collectionRouter from "./routers/collectionRouter.js";
+import playlistRouter from "./routers/playlistRouter.js";
 import apiRouter from "./routers/apiRouter.js";
 
 const app = express();
@@ -37,6 +37,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/", rootRouter);
 app.use("/account", accountRouter);
 app.use("/collection", collectionRouter);
+app.use("/playlist", playlistRouter);
 app.use("/api", apiRouter);
 
 export default app;

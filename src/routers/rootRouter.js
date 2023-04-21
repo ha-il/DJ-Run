@@ -2,10 +2,12 @@ import express from "express";
 import {
   loginRequiredMiddleware,
   publicOnlyMiddleware,
+  uploadTrackMiddleware,
 } from "../middlewares.js";
 import {
   renderChartPage,
-  renderHomepage,
+  renderUploadTrackPage,
+  uploadTrack,
 } from "../controllers/trackController.js";
 import {
   createAccount,
@@ -14,10 +16,11 @@ import {
   renderLoginPage,
   renderSignupPage,
 } from "../controllers/userController.js";
+import { renderHomepage } from "../controllers/playlistController.js";
 
 const rootRouter = express.Router();
 
-rootRouter.get("/", (req, res) => res.render("home.pug", { title: "홈" }));
+rootRouter.get("/", renderHomepage);
 rootRouter
   .route("/signup")
   .all(publicOnlyMiddleware)
@@ -31,8 +34,19 @@ rootRouter
 rootRouter.get("/chart", renderChartPage);
 rootRouter.get("/search");
 rootRouter.get("/queue");
-rootRouter.get("/user/:user_id");
-rootRouter.get("/track/:track_id");
+rootRouter.get("/users/:user_id");
+rootRouter.get("/tracks/:track_id");
 rootRouter.get("/playlists/:playlist_id");
+
+rootRouter
+  .route("/upload")
+  .get(renderUploadTrackPage)
+  .post(
+    uploadTrackMiddleware.fields([
+      { name: "trackFile" },
+      { name: "trackImageFile" },
+    ]),
+    uploadTrack
+  );
 
 export default rootRouter;
