@@ -29,7 +29,7 @@ export const renderUploadTrackPage = (req, res) => {
 
 export const uploadTrack = async (req, res) => {
   const { name, artists, genres } = req.body;
-  const { path } = req.file;
+  const { trackFile, trackImageFile } = req.files;
 
   try {
     await Track.create({
@@ -37,7 +37,8 @@ export const uploadTrack = async (req, res) => {
       artists: artists.split(","),
       genres: genres.split(","),
       durationMs: 180000,
-      fileUrl: path,
+      fileUrl: trackFile[0].path,
+      imageUrl: trackImageFile[0].path,
     });
     return res.redirect("/");
   } catch (error) {
