@@ -55,24 +55,15 @@ body {
   .navigation-loggedInUser_menu {
     display: flex;
     flex-direction: column;
-    button {
-      text-align: left;
-      padding: 0;
-      display: flex;
-      align-items: center;
+    a {
       padding-top: $spacing-2;
       padding-bottom: $spacing-2;
-      width: 12rem;
+      display: flex;
+      align-items: center;
       i {
-        font-size: $fontSize-1;
+        font-size: $fontSize-3;
         width: $fontSize-3;
         height: $fontSize-3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $color-white;
-        border-radius: 2.5px;
-        color: $color-black;
         text-align: center;
         margin-right: $spacing-3;
       }
