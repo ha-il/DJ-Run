@@ -4,6 +4,11 @@
   justify-content: center;
   align-items: center;
 
+  .title {
+    font-weight: $fontWeight-bold;
+    font-size: $fontSize-2;
+    margin-bottom: $spacing-4;
+  }
   .error_message {
     color: $color-red;
     padding: $spacing-4;

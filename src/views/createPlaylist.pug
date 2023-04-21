@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+  
+  div(class="form-container")
+    if errorMessage
+        div(class="error_message")=errorMessage
+    form(method="POST")
+      h1(class="title") 플레이리스트 만들기
+      div(class="form-input")
+        input(id="name" name="name" type="text" placeholder="이름 추가" minlength=1 maxlength=50 required )
+      div(class="form-input") 
+        input(id="description" name="description" type="text" placeholder="설명 추가(선택 사항)" maxlength=100)
+      input(type="submit", value="저장하기")
+    
+  
+    
+      
