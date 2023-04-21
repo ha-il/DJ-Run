@@ -22,13 +22,16 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
+    img,
     .image {
       width: 100px;
       height: 100px;
       border: none;
-      background-color: $color-white;
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
+    }
+    .image {
+      background-color: $color-white;
     }
     span {
       margin-left: $spacing-4;

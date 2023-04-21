@@ -14,7 +14,10 @@ block content
         li(class="track_container")
           span(class="rank") #{index + 1}위
           div(class="info")
-            div(class="image")
+            if track.imageUrl
+              img(src=`${track.imageUrl}`)
+            else
+              div(class="image")
             div(class="detail")
               span(class="name")=track.name
               span(class="artists")=track.artists

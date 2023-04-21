@@ -3,25 +3,18 @@ extends layout.pug
 block content
   if isLoggedIn
     h1(class="greeting") #{loggedInUser.profileName}님, DJ.Run에 오신 걸 환영합니다!
-    div(class="loggedInUser_playlists")
-      div(class="loggedInUser_playlist_container")
-        div(class="image") image
-        span 플레이리스트 이름
-      div(class="loggedInUser_playlist_container")
-        div(class="image") image
-        span 플레이리스트 이름
-      div(class="loggedInUser_playlist_container")
-        div(class="image") image
-        span 플레이리스트 이름
-      div(class="loggedInUser_playlist_container")
-        div(class="image") image
-        span 플레이리스트 이름
-      div(class="loggedInUser_playlist_container")
-        div(class="image") image
-        span 플레이리스트 이름
-      div(class="loggedInUser_playlist_container")
-        div(class="image") image
-        span 플레이리스트 이름
+    if errorMessage
+      span=errorMessage
+    if loggedInUserPlaylists
+      div(class="loggedInUser_playlists")
+        each playlist in loggedInUserPlaylists
+          div(class="loggedInUser_playlist_container")
+            if playlist.tracks[0]
+              img(src=`${playlist.tracks[0].imageUrl}`)
+            else
+              div(class="image") image
+            span=playlist.name
+      
         
   h2(class="sub-title") 많이 재생된 플레이리스트를 추천한다 
   div(class="recommended_playlists")
